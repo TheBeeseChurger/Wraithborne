@@ -43,4 +43,9 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.FirstPerson.Look.ReadValue<Vector2>();
     }
+
+    public bool InteractedThisFrame()
+    {
+        return playerControls.FirstPerson.Interact.triggered;
+    }
 }
