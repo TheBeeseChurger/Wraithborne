@@ -37,12 +37,6 @@ public class PlayerCameraController : MonoBehaviour
         cutsceneCamera.Priority.Value = 5;
         gameplayCamera.Priority.Value = 10;
         _cutsceneTransform.parent = null;
-        ReEnableMouseInput();
-    }
-
-    private async void ReEnableMouseInput()
-    {
-        await Awaitable.WaitForSecondsAsync(2f);
         InputManager.Instance.EnableMouseInput(true);
     }
 }

@@ -469,4 +469,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayCamera: {fileID: 8405343833742759315}
   cutsceneCamera: {fileID: 1890217145100520147}
-  cutsceneTransform: {fileID: 2469856733721587832}

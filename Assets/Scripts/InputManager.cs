@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
 
     public bool InteractedThisFrame()
     {
-        if (_playerControls.FirstPerson.Interact.enabled) return _playerControls.FirstPerson.Interact.triggered;
+        if (_playerControls.FirstPerson.Interact.enabled) return _playerControls.FirstPerson.Interact.WasPressedThisFrame();
         return false;
     }
 }
