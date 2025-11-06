@@ -257,8 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6203b5f1db12cbe4c99e9f0c555f93e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feeder: {fileID: 2002808807}
-  focusObject: {fileID: 186597849}
+  _transform: {fileID: 1655828414}
 --- !u!65 &179137408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -291,37 +290,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.238, y: 0.786, z: 1.11}
   m_LocalScale: {x: 1.04, y: 1, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &186597849
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 186597850}
-  m_Layer: 0
-  m_Name: Focus
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &186597850
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186597849}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.172, y: 2.4675999, z: -3.202}
-  m_LocalScale: {x: 1, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -954,8 +922,8 @@ GameObject:
   - component: {fileID: 679026317}
   - component: {fileID: 679026316}
   - component: {fileID: 679026315}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 3
+  m_Name: SpecialCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1020,7 +988,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 726cda845faeaec4b902bdef3fcc18b9, type: 2}
+  - {fileID: 2100000, guid: b5123d59e1548d7459e6696dca06bf59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1724,17 +1692,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507855959}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2002808807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5100630032064695684, guid: 700cd96c9f850d24ba8d968ccb0add70, type: 3}
-  m_PrefabInstance: {fileID: 7143671676450137686}
+--- !u!1 &1655828413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b103be7f3ead0f49a98e5d8b4c60e22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655828414}
+  m_Layer: 0
+  m_Name: Focus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1655828414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655828413}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.172, y: 2.441, z: -3.256}
+  m_LocalScale: {x: 1, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7143671676450137686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1783,17 +1771,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2886426925540547536, guid: 700cd96c9f850d24ba8d968ccb0add70, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2886426925540547536, guid: 700cd96c9f850d24ba8d968ccb0add70, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2886426925540547536, guid: 700cd96c9f850d24ba8d968ccb0add70, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.03
+    - target: {fileID: 3332844435390330457, guid: 700cd96c9f850d24ba8d968ccb0add70, type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8113669022416190283, guid: 700cd96c9f850d24ba8d968ccb0add70, type: 3}
       propertyPath: m_Name
@@ -1819,4 +1799,4 @@ SceneRoots:
   - {fileID: 962098733}
   - {fileID: 933266518}
   - {fileID: 179137409}
-  - {fileID: 186597850}
+  - {fileID: 1655828414}
