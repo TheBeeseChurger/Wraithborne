@@ -47,6 +47,11 @@ public class InputManager : MonoBehaviour
         return Vector2.zero;
     }
 
+    public bool GetMouseDeltaEnabled()
+    {
+        return playerControls.FirstPerson.Look.enabled;
+    }
+
     public bool EnableMouseInput(bool enable)
     {
         if (enable)

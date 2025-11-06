@@ -1,8 +1,12 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Windows;
 
-[RequireComponent(typeof(CinemachineCamera))]
-public class CinemachineCustomFeeder : MonoBehaviour
+[ExecuteAlways]
+[SaveDuringPlay]
+[AddComponentMenu("Cinemachine/Custom/CinemachineCustomFeeder")]
+[RequireComponent(typeof(CinemachinePanTilt))]
+public class CinemachineCustomFeeder : CinemachineExtension
 {
     [Header("Input Settings")]
     public float mouseSens = 5f;
@@ -14,35 +18,37 @@ public class CinemachineCustomFeeder : MonoBehaviour
 
     private CinemachinePanTilt cmPanTilt;
 
-    private bool PanTilt = false;
-
-    private void Awake()
+    protected override void Awake()
     {
-        if (TryGetComponent<CinemachinePanTilt>(out cmPanTilt)) PanTilt = true;
-        else PanTilt = false;
+        cmPanTilt = GetComponent<CinemachinePanTilt>();
+        base.Awake();
     }
 
-    void Update()
+    protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
     {
-        Vector2 input = InputManager.Instance.GetMouseDelta();
+        if (stage != CinemachineCore.Stage.Body || !Application.isPlaying) return;
+        if (!InputManager.Instance.GetMouseDeltaEnabled()) return;
 
-        if (PanTilt)
-        {
-            float smoothTime = input.magnitude > 0.01f ? accelTime : deaccelTime;
-            currentInput = Vector2.SmoothDamp(currentInput, input, ref velocity, smoothTime);
+        Vector2 rawInput = InputManager.Instance.GetMouseDelta();
+        float smoothTime = rawInput.magnitude > 0.01f ? accelTime : deaccelTime;
 
-            var panRange = cmPanTilt.PanAxis.Range;
-            var tiltRange = cmPanTilt.TiltAxis.Range;
+        currentInput = Vector2.SmoothDamp(currentInput, rawInput, ref velocity, smoothTime);
 
-            float newX = cmPanTilt.PanAxis.Value + (currentInput.x * mouseSens);
-            float newY = cmPanTilt.TiltAxis.Value + (-currentInput.y * mouseSens);
+        float newPan = cmPanTilt.PanAxis.Value + (currentInput.x * mouseSens);
+        float newTilt = cmPanTilt.TiltAxis.Value + (-currentInput.y * mouseSens);
 
-            if (newX > panRange.x) newX -= 360;
-            else if (newX < panRange.y) newX += 360;
-            newY = Mathf.Clamp(newY, tiltRange.x, tiltRange.y);
+        newPan = NormalizePanAngle(newPan, cmPanTilt.PanAxis.Range.x, cmPanTilt.PanAxis.Range.y);
+        newTilt = Mathf.Clamp(newTilt, cmPanTilt.TiltAxis.Range.x, cmPanTilt.TiltAxis.Range.y);
 
-            cmPanTilt.PanAxis.Value = newX;
-            cmPanTilt.TiltAxis.Value = newY;
-        }
+        cmPanTilt.PanAxis.Value = newPan;
+        cmPanTilt.TiltAxis.Value = newTilt;
+    }
+
+    private float NormalizePanAngle(float angle, float min, float max)
+    {
+        float range = max - min;
+        while (angle > max) angle -= range;
+        while (angle < min) angle += range;
+        return angle;
     }
 }

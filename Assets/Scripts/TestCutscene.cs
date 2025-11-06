@@ -21,7 +21,7 @@ public class TestCutscene : MonoBehaviour
 
     private IEnumerator Cutscene(PlayerController player)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3);
         player.CanMove = true;
         InputManager.Instance.EnableMouseInput(true);
     }
