@@ -13,14 +13,14 @@ public class CinemachineCustomFeeder : CinemachineExtension
     public float accelTime = 0.2f;
     public float deaccelTime = 0.2f;
 
-    private Vector2 currentInput;
-    private Vector2 velocity;
+    private Vector2 _currentInput;
+    private Vector2 _velocity;
 
-    private CinemachinePanTilt cmPanTilt;
+    private CinemachinePanTilt _cmPanTilt;
 
     protected override void Awake()
     {
-        cmPanTilt = GetComponent<CinemachinePanTilt>();
+        _cmPanTilt = GetComponent<CinemachinePanTilt>();
         base.Awake();
     }
 
@@ -32,16 +32,16 @@ public class CinemachineCustomFeeder : CinemachineExtension
         Vector2 rawInput = InputManager.Instance.GetMouseDelta();
         float smoothTime = rawInput.magnitude > 0.01f ? accelTime : deaccelTime;
 
-        currentInput = Vector2.SmoothDamp(currentInput, rawInput, ref velocity, smoothTime);
+        _currentInput = Vector2.SmoothDamp(_currentInput, rawInput, ref _velocity, smoothTime);
 
-        float newPan = cmPanTilt.PanAxis.Value + (currentInput.x * mouseSens);
-        float newTilt = cmPanTilt.TiltAxis.Value + (-currentInput.y * mouseSens);
+        float newPan = _cmPanTilt.PanAxis.Value + (_currentInput.x * mouseSens);
+        float newTilt = _cmPanTilt.TiltAxis.Value + (-_currentInput.y * mouseSens);
 
-        newPan = NormalizePanAngle(newPan, cmPanTilt.PanAxis.Range.x, cmPanTilt.PanAxis.Range.y);
-        newTilt = Mathf.Clamp(newTilt, cmPanTilt.TiltAxis.Range.x, cmPanTilt.TiltAxis.Range.y);
+        newPan = NormalizePanAngle(newPan, _cmPanTilt.PanAxis.Range.x, _cmPanTilt.PanAxis.Range.y);
+        newTilt = Mathf.Clamp(newTilt, _cmPanTilt.TiltAxis.Range.x, _cmPanTilt.TiltAxis.Range.y);
 
-        cmPanTilt.PanAxis.Value = newPan;
-        cmPanTilt.TiltAxis.Value = newTilt;
+        _cmPanTilt.PanAxis.Value = newPan;
+        _cmPanTilt.TiltAxis.Value = newTilt;
     }
 
     private float NormalizePanAngle(float angle, float min, float max)

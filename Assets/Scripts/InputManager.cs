@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
         get { return _instance; }
     }
 
-    private PlayerControls playerControls;
+    private PlayerControls _playerControls;
 
     private void Awake()
     {
@@ -22,61 +22,61 @@ public class InputManager : MonoBehaviour
             _instance = this;
         }
 
-        playerControls = new();
+        _playerControls = new();
     }
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        _playerControls.Enable();
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        _playerControls.Disable();
     }
 
     public Vector2 GetPlayerMovement()
     {
-        if (playerControls.FirstPerson.Movement.enabled) return playerControls.FirstPerson.Movement.ReadValue<Vector2>();
+        if (_playerControls.FirstPerson.Movement.enabled) return _playerControls.FirstPerson.Movement.ReadValue<Vector2>();
         return Vector2.zero;
     }
 
     public Vector2 GetMouseDelta()
     {
-        if (playerControls.FirstPerson.Look.enabled) return playerControls.FirstPerson.Look.ReadValue<Vector2>();
+        if (_playerControls.FirstPerson.Look.enabled) return _playerControls.FirstPerson.Look.ReadValue<Vector2>();
         return Vector2.zero;
     }
 
     public bool GetMouseDeltaEnabled()
     {
-        return playerControls.FirstPerson.Look.enabled;
+        return _playerControls.FirstPerson.Look.enabled;
     }
 
     public bool EnableMouseInput(bool enable)
     {
         if (enable)
         {
-            if (playerControls.FirstPerson.Look.enabled)
+            if (_playerControls.FirstPerson.Look.enabled)
             {
                 return false;
             }
-            playerControls.FirstPerson.Look.Enable();
+            _playerControls.FirstPerson.Look.Enable();
             return true;
         }
         else
         {
-            if (!playerControls.FirstPerson.Look.enabled)
+            if (!_playerControls.FirstPerson.Look.enabled)
             {
                 return false;
             }
-            playerControls.FirstPerson.Look.Disable();
+            _playerControls.FirstPerson.Look.Disable();
             return true;
         }
     }
 
     public bool InteractedThisFrame()
     {
-        if (playerControls.FirstPerson.Interact.enabled) return playerControls.FirstPerson.Interact.triggered;
+        if (_playerControls.FirstPerson.Interact.enabled) return _playerControls.FirstPerson.Interact.triggered;
         return false;
     }
 }
