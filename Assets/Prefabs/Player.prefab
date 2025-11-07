@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3223942985834465356}
   - component: {fileID: 5100630032064695684}
   - component: {fileID: 3952043445665095446}
+  - component: {fileID: 6924842843157365441}
   m_Layer: 0
   m_Name: GameplayCamera
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -77,7 +78,7 @@ MonoBehaviour:
       Curvature: {x: 2, y: 11}
       BarrelClipping: 0.25
       Anamorphism: 0
-  BlendHint: 31
+  BlendHint: 26
 --- !u!114 &3223942985834465356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +141,20 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
+--- !u!114 &6924842843157365441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495688937322044884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a003a93ee1a3c8540841a3cab3fa64f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDistance: 2
+  highlightColor: {r: 1, g: 0.81960785, b: 0.4, a: 0}
 --- !u!1 &2332283159279068225
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +246,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -247,7 +262,7 @@ MonoBehaviour:
       Curvature: {x: 2, y: 11}
       BarrelClipping: 0.25
       Anamorphism: 0
-  BlendHint: 15
+  BlendHint: 26
 --- !u!114 &1340271176555009383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +299,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
     Time: 0
