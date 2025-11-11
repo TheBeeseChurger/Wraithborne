@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Grounded: " + _controller.isGrounded);
         if (_controller.isGrounded && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0;

@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b103be7f3ead0f49a98e5d8b4c60e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSens: 0.31
+  mouseSens: 0.16
   accelTime: 0.05
   deaccelTime: 0.05
 --- !u!114 &3952043445665095446
