@@ -52,6 +52,28 @@ public class InputManager : MonoBehaviour
         return _playerControls.FirstPerson.Look.enabled;
     }
 
+    public Vector2 GetMousePosition()
+    {
+        if (_playerControls.FirstPerson.MousePosition.enabled) return _playerControls.FirstPerson.MousePosition.ReadValue<Vector2>();
+        return Vector2.zero;
+    }
+
+    public Vector2 GetMousePositionCentered()
+    {
+        if (!_playerControls.FirstPerson.MousePosition.enabled) return Vector2.zero;
+        Vector2 pos = _playerControls.FirstPerson.MousePosition.ReadValue<Vector2>();
+
+        pos.x -= Screen.width * 0.5f;
+        pos.y -= Screen.height * 0.5f;
+
+        return pos;
+    }
+
+    public bool GetMousePositionEnabled()
+    {
+        return _playerControls.FirstPerson.MousePosition.enabled;
+    }
+
     public bool EnableMouseInput(bool enable)
     {
         if (enable)
@@ -61,6 +83,7 @@ public class InputManager : MonoBehaviour
                 return false;
             }
             _playerControls.FirstPerson.Look.Enable();
+            _playerControls.FirstPerson.MousePosition.Enable();
             return true;
         }
         else
@@ -70,6 +93,7 @@ public class InputManager : MonoBehaviour
                 return false;
             }
             _playerControls.FirstPerson.Look.Disable();
+            _playerControls.FirstPerson.MousePosition.Disable();
             return true;
         }
     }

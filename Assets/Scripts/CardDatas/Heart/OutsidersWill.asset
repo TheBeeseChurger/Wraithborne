@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ccaa549efbac346b01a4df80e43349, type: 3}
+  m_Name: OutsidersWill
+  m_EditorClassIdentifier: 
+  CardName: Outsider's Will
+  CardDescription: This heart is chasing what it lost, desperately searching for
+    something in a new world.
+  Artwork: {fileID: 0}
+  CardType: 3
+  CardPulseType: 4
+  HeartPassive: This heart card can steal the passives of other hearts upon defeating
+    them.
+  HeartHealth: 20
+  EntityPulseCost: 0
+  EntityHealth: 0
+  EntityDamage: 0
