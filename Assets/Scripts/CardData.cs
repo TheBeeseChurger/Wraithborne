@@ -21,14 +21,14 @@ public class CardData : ScriptableObject
 {
     [Header("Basic Information")]
     public string CardName;
-    public string CardDescription;
+    [TextArea] public string CardDescription;
     public Sprite Artwork;
 
     [Header("Type Information")]
     public CardTypes CardType;
     public PulseTypes CardPulseType;
 
-    public string HeartPassive;
+    [TextArea] public string HeartPassive;
     public int HeartHealth;
     public int HeartPulseGen;
 
