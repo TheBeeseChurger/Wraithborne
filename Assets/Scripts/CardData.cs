@@ -30,6 +30,7 @@ public class CardData : ScriptableObject
 
     public string HeartPassive;
     public int HeartHealth;
+    public int HeartPulseGen;
 
     public int EntityPulseCost;
     public int EntityHealth;

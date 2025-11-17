@@ -16,6 +16,7 @@ public class CardDataEditor : Editor
 
     SerializedProperty heartPassive;
     SerializedProperty heartHealth;
+    SerializedProperty heartPulseGen;
 
     SerializedProperty entityPulseCost;
     SerializedProperty entityHealth;
@@ -32,6 +33,7 @@ public class CardDataEditor : Editor
 
         heartPassive = serializedObject.FindProperty("HeartPassive");
         heartHealth = serializedObject.FindProperty("HeartHealth");
+        heartPulseGen = serializedObject.FindProperty("HeartPulseGen");
 
         entityPulseCost = serializedObject.FindProperty("EntityPulseCost");
         entityHealth = serializedObject.FindProperty("EntityHealth");
@@ -63,6 +65,7 @@ public class CardDataEditor : Editor
 
                     EditorGUILayout.PropertyField(heartPassive);
                     EditorGUILayout.PropertyField(heartHealth);
+                    EditorGUILayout.PropertyField(heartPulseGen);
 
                     EditorGUILayout.EndVertical();
                 }
@@ -80,7 +83,8 @@ public class CardDataEditor : Editor
                     EditorGUILayout.EndVertical();
                 }
                 break;
-            default:
+            case CardTypes.Structure:
+            case CardTypes.Ritual:
                 break;
         }
 
