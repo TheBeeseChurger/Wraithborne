@@ -5,7 +5,7 @@ public class CardPreviewPanel : MonoBehaviour
     public static CardPreviewPanel Instance;
 
     public FrameMaker FrameMaker;
-    public CardInstanceRenderer previewRender;
+    public UICardInstanceRenderer previewRender;
 
     void Awake()
     {
