@@ -27,6 +27,7 @@ public class DeckInstance
     }
 
     public void Discard(CardInstance card) => DiscardPile.Add(card);
+    public void Banish(CardInstance card) => BanishPile.Add(card);
 
     public void ReshuffleDiscard()
     {

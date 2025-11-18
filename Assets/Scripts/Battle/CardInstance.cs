@@ -8,11 +8,15 @@ public class CardInstance
     public int currentCost;
     public int currentHealth;
     public bool HasAction;
+    public string mainText;
 
     public CardInstance(CardData data)
     {
         this.Data = data;
         this.instanceID = 1;
+
+        this.mainText = "<i>" + data.CardDescription + "</i>";
+        this.mainText += "<br><br>";
 
         switch(data.CardType)
         {
@@ -25,6 +29,8 @@ public class CardInstance
                 this.currentHealth = data.HeartHealth;
                 this.currentCost = data.HeartPulseGen;
                 this.HasAction = true;
+
+                this.mainText += "Passive - " + data.HeartPassive;
                 break;
             default:
                 break;

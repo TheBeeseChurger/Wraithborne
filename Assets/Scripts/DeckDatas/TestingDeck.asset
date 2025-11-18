@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeckName: TestingDeck
   Deck:
-  - {fileID: 11400000, guid: 574d926b72b99a044ab3cc7678ea057b, type: 2}
   - {fileID: 11400000, guid: dbe68bfd4b979234ba911085869418d1, type: 2}
   - {fileID: 11400000, guid: dbe68bfd4b979234ba911085869418d1, type: 2}
   - {fileID: 11400000, guid: dbe68bfd4b979234ba911085869418d1, type: 2}
+  - {fileID: 11400000, guid: b9cca747d3dc7874c88a30314a1ebc75, type: 2}
+  HeartCard: {fileID: 11400000, guid: 574d926b72b99a044ab3cc7678ea057b, type: 2}

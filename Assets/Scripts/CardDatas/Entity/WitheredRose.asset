@@ -16,9 +16,10 @@ MonoBehaviour:
   CardDescription: A single rose, dried up and dead, and even still, its thorns cut.
   Artwork: {fileID: 0}
   CardType: 0
-  CardPulseType: 0
+  CardPulseType: 2
   HeartPassive: 
   HeartHealth: 0
+  HeartPulseGen: 0
   EntityPulseCost: 1
   EntityHealth: 1
   EntityDamage: 5

@@ -6,4 +6,5 @@ public class DeckData : ScriptableObject
 {
     public string DeckName;
     public List<CardData> Deck;
+    public CardData HeartCard;
 }

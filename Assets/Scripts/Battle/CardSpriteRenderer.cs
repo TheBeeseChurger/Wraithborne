@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CardRenderer : MonoBehaviour
+public class CardSpriteRenderer : MonoBehaviour
 {
     public Sprite sprite;
     

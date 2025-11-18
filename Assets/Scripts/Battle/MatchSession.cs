@@ -16,13 +16,15 @@ public class MatchSession
 
     public MatchPhases CurrentPhase;
     public int TurnCount;
-    
-    //Other states
 
-    public void StartMatch()
+    //Other states
+    public PlayerRuntimeState Player;
+    public PlayerRuntimeState Enemy;
+
+    public static void StartMatch()
     {
         MatchSession.CurrentMatch = new MatchSession();
     }
 
-    public void EndMatch() { MatchSession.CurrentMatch = null; }
+    public static void EndMatch() { MatchSession.CurrentMatch = null; }
 }
