@@ -23,17 +23,19 @@ public enum TurnPhases
 public class MatchSession
 {
     public static MatchSession CurrentMatch;
-    private static int NextCardID = 1;
+    private int NextCardID = 1;
 
     public MatchPhases CurrentPhase;
     public TurnPhases CurrentTurn;
     public int TurnCount;
 
+    private FrameMaker FrameMaker;
+
     //Other states
     public PlayerRuntimeState Player;
     public PlayerRuntimeState Enemy;
 
-    public static void StartMatch(DeckData playerDeck, DeckData enemyDeck)
+    public static void StartMatch(DeckData playerDeck, DeckData enemyDeck, FrameMaker fm)
     {
         MatchSession.CurrentMatch = new MatchSession();
         CurrentMatch.CurrentPhase = MatchPhases.Pre;
@@ -41,15 +43,21 @@ public class MatchSession
 
         CurrentMatch.Player = new PlayerRuntimeState(playerDeck);
         CurrentMatch.Enemy = new PlayerRuntimeState(enemyDeck);
+        CurrentMatch.FrameMaker = fm;
 
         CurrentMatch.TurnCount = 1;
     }
 
     public static void EndMatch() { MatchSession.CurrentMatch = null; }
 
-    public static int GetCardID()
+    public int GetCardID()
     {
         NextCardID++;
-        return --NextCardID;
+        return NextCardID - 1;
+    }
+
+    public Sprite GetCardFrame(CardData cardData)
+    {
+        return FrameMaker.PickFrame(cardData);
     }
 }

@@ -13,7 +13,7 @@ public class CardInstance
     public CardInstance(CardData data)
     {
         this.Data = data;
-        this.instanceID = MatchSession.GetCardID();
+        this.instanceID = MatchSession.CurrentMatch.GetCardID();
 
         this.mainText = "<i>" + data.CardDescription + "</i>";
         this.mainText += "<br><br>";

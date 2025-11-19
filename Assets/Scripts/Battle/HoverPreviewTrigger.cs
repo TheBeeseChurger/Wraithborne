@@ -7,6 +7,8 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
     public IPreviewable previewSource;
     Coroutine hoverRoutine;
 
+    [SerializeField] bool pointerMode;
+
     [SerializeField] float delay = 0.3f;
 
     private void Awake()
@@ -16,25 +18,31 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!pointerMode) return;
+        if (hoverRoutine != null) return;
         hoverRoutine = StartCoroutine(ShowPreview());
     }
 
     private void OnMouseEnter()
     {
+        if (pointerMode) return;
+        if (hoverRoutine != null) return;
         hoverRoutine = StartCoroutine(ShowPreview());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!pointerMode) return;
         if (hoverRoutine != null) StopCoroutine(hoverRoutine);
-
+        hoverRoutine = null;
         CardPreviewPanel.Instance.Hide();
     }
 
     private void OnMouseExit()
     {
+        if (pointerMode) return;
         if (hoverRoutine != null) StopCoroutine(hoverRoutine);
-
+        hoverRoutine = null;
         CardPreviewPanel.Instance.Hide();
     }
 

@@ -1,11 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class CardPreviewPanel : MonoBehaviour
 {
     public static CardPreviewPanel Instance;
 
-    public FrameMaker FrameMaker;
     public UICardInstanceRenderer previewRender;
+    public TextMeshProUGUI idText;
 
     void Awake()
     {
@@ -15,7 +16,8 @@ public class CardPreviewPanel : MonoBehaviour
     public void Show(IPreviewable previewTarget)
     {
         var instance = previewTarget.GetCardInstance();
-        previewRender.Initialize(instance, FrameMaker.PickFrame(instance.Data));
+        previewRender.Initialize(instance, MatchSession.CurrentMatch.GetCardFrame(instance.Data));
+        idText.text = "Instance ID: " + instance.instanceID;
 
         previewRender.gameObject.SetActive(true);
     }

@@ -19,8 +19,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 06d6ddae1c2bad943aa29c81d3e59a70, type: 3}
   - {fileID: 21300000, guid: 3850fd3edd20cb84d9362d7ba1e9ef9f, type: 3}
   normalFrames:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: c7861dfa35805c14490a7f398e14e030, type: 3}
+  - {fileID: 21300000, guid: eca9b5c7f17479c4b974018ddb635bf1, type: 3}
+  - {fileID: 21300000, guid: ec1c6ca5eeba40c4294d4ec237ba711b, type: 3}
+  - {fileID: 21300000, guid: d4fb0e750d3025f4ba506cfcf8f1e05f, type: 3}
+  - {fileID: 21300000, guid: 2909285388a27c941ae5e2f7c53c64ff, type: 3}

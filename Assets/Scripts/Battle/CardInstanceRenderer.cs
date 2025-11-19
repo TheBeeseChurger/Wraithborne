@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CardInstanceRenderer : MonoBehaviour
+public class CardInstanceRenderer : MonoBehaviour, IPreviewable
 {
     [SerializeField] CardSpriteRenderer frameRenderer;
     [SerializeField] CardSpriteRenderer artworkRenderer;
@@ -11,7 +11,6 @@ public class CardInstanceRenderer : MonoBehaviour
     [SerializeField] TextMeshProUGUI descriptionBox;
 
     private CardInstance _cardInstance;
-    private Sprite frame;
 
     // This is a temp variable
     [Header("To be deleted variables")]
@@ -43,5 +42,10 @@ public class CardInstanceRenderer : MonoBehaviour
         costAmount.text = _cardInstance.currentCost.ToString();
         cardName.text = _cardInstance.Data.CardName;
         descriptionBox.text = _cardInstance.mainText;
+    }
+
+    public CardInstance GetCardInstance()
+    {
+        return _cardInstance;
     }
 }
