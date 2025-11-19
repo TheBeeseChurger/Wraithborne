@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UICardInstanceRenderer : MonoBehaviour
+public class UICardInstanceRenderer : MonoBehaviour, IPreviewable
 {
     [SerializeField] Image frameRenderer;
     [SerializeField] Image artworkRenderer;
@@ -10,6 +10,8 @@ public class UICardInstanceRenderer : MonoBehaviour
     [SerializeField] TextMeshProUGUI cardName;
     [SerializeField] TextMeshProUGUI costAmount;
     [SerializeField] TextMeshProUGUI descriptionBox;
+    [SerializeField] TextMeshProUGUI cardDamage;
+    [SerializeField] TextMeshProUGUI cardHealth;
 
     private CardInstance _cardInstance;
 
@@ -23,5 +25,21 @@ public class UICardInstanceRenderer : MonoBehaviour
         costAmount.text = _cardInstance.currentCost.ToString();
         cardName.text = _cardInstance.Data.CardName;
         descriptionBox.text = _cardInstance.mainText;
+
+        if (_cardInstance.currentDamage >= 0)
+        {
+            cardDamage.text = _cardInstance.currentDamage.ToString();
+            cardHealth.text = _cardInstance.currentHealth.ToString();
+        }
+        else
+        {
+            cardDamage.text = "";
+            cardHealth.text = "";
+        }
+    }
+
+    public CardInstance GetCardInstance()
+    {
+        return _cardInstance;
     }
 }

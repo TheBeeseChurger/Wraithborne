@@ -9,5 +9,6 @@ public class MatchManager : MonoBehaviour
     void Start()
     {
         MatchSession.StartMatch(playerDeck, enemyDeck, fm);
+        HandLayoutController.Instance.Initialize();
     }
 }

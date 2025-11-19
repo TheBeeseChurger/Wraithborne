@@ -103,4 +103,40 @@ public class InputManager : MonoBehaviour
         if (_playerControls.FirstPerson.Interact.enabled) return _playerControls.FirstPerson.Interact.WasPressedThisFrame();
         return false;
     }
+
+    public bool LeftClickThisFrame()
+    {
+        if (_playerControls.FirstPerson.LeftClick.enabled) return _playerControls.FirstPerson.LeftClick.WasPressedThisFrame();
+        return false;
+    }
+
+    public bool RightClickThisFrame()
+    {
+        if (_playerControls.FirstPerson.RightClick.enabled) return _playerControls.FirstPerson.RightClick.WasPressedThisFrame();
+        return false;
+    }
+
+    public bool LeftHoldThisFrame()
+    {
+        if (_playerControls.FirstPerson.LeftClick.enabled) return _playerControls.FirstPerson.LeftClick.IsPressed();
+        return false;
+    }
+
+    public bool RightHoldThisFrame()
+    {
+        if (_playerControls.FirstPerson.RightClick.enabled) return _playerControls.FirstPerson.RightClick.IsPressed();
+        return false;
+    }
+
+    public bool LeftReleaseThisFrame()
+    {
+        if (_playerControls.FirstPerson.LeftClick.enabled) return _playerControls.FirstPerson.LeftClick.WasReleasedThisFrame();
+        return false;
+    }
+
+    public bool RightReleaseThisFrame()
+    {
+        if (_playerControls.FirstPerson.RightClick.enabled) return _playerControls.FirstPerson.RightClick.WasReleasedThisFrame();
+        return false;
+    }
 }

@@ -7,6 +7,7 @@ public class CardInstance
 
     public int currentCost;
     public int currentHealth;
+    public int currentDamage;
     public bool HasAction;
     public string mainText;
 
@@ -23,11 +24,13 @@ public class CardInstance
             case CardTypes.Entity:
                 this.currentCost = data.EntityPulseCost;
                 this.currentHealth = data.EntityHealth;
+                this.currentDamage = data.EntityDamage;
                 this.HasAction = false;
                 break;
             case CardTypes.Heart:
                 this.currentHealth = data.HeartHealth;
                 this.currentCost = data.HeartPulseGen;
+                this.currentDamage = -1;
                 this.HasAction = true;
 
                 this.mainText += "Passive - " + data.HeartPassive;

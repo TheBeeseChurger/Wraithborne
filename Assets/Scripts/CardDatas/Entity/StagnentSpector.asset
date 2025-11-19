@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardName: Stagnant Spector
   CardDescription: An entity with no solid form only a bundle of stained rags swaying
-    gently in the [Keyword.Pulse].
+    gently in the Pulse.
   Artwork: {fileID: 0}
   CardType: 0
   CardPulseType: 4
   HeartPassive: 
   HeartHealth: 0
+  HeartPulseGen: 0
   EntityPulseCost: 2
   EntityHealth: 3
   EntityDamage: 2

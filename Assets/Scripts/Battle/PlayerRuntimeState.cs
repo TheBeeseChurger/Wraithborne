@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class PlayerRuntimeState
     public DeckInstance Deck;
     public CardInstance HeartCard;
     public List<CardInstance> Hand = new();
+
+    public event Action<CardInstance> CardAdded;
 
     public const int MAX_HAND_SIZE = 10;
 
@@ -23,6 +26,7 @@ public class PlayerRuntimeState
             if (card != null)
             {
                 Hand.Add(card);
+                CardAdded?.Invoke(card);
             }
         }
     }
