@@ -7,7 +7,7 @@ public class HandLayoutController : MonoBehaviour
     public static HandLayoutController Instance;
 
     [Header("Spawning Settings")]
-    [SerializeField] GameObject uICardPrefab;
+    [SerializeField] GameObject handCardPrefab;
     [SerializeField] RectTransform spawnTransform;
 
     [Header("Layout Settings")]
@@ -16,7 +16,8 @@ public class HandLayoutController : MonoBehaviour
     [SerializeField] float hoverSpread = 35f;
     [SerializeField] float maxFanAngle = 8f;
 
-    private List<UICardInstanceRenderer> _uICards = new();
+    private readonly List<HandCardController> _handCards = new();
+    private HandCardController _hoveredHandCard;
     private PlayerRuntimeState _owner;
 
     private RectTransform anchor;
@@ -35,25 +36,66 @@ public class HandLayoutController : MonoBehaviour
 
     IEnumerator InitialDraw()
     {
-        while (_uICards.Count < 5)
+        while (_handCards.Count < 5)
         {
             yield return new WaitForSeconds(0.5f);
             _owner.Draw(1);
+            RefreshLayout();
         }
     }
 
     private void MakeCard(CardInstance card)
     {
-        var uICard = Instantiate<GameObject>(uICardPrefab).GetComponent<UICardInstanceRenderer>();
+        var uICard = Instantiate<GameObject>(handCardPrefab).GetComponent<HandCardController>();
         uICard.Initialize(card, MatchSession.CurrentMatch.GetCardFrame(card.Data));
         uICard.transform.SetParent(anchor, false);
 
-        _uICards.Add(uICard);
+        _handCards.Add(uICard);
         ReturnCard(uICard, spawnTransform.anchoredPosition);
     }
 
-    private void ReturnCard(UICardInstanceRenderer card, Vector2 startingPos)
+    private void ReturnCard(HandCardController card, Vector2 startingPos)
     {
 
+    }
+
+    public void RefreshLayout()
+    {
+        int count = _handCards.Count;
+        if (count == 0) return;
+
+        float totalWidth = (count - 1) * cardSpacing;
+        float startX = -totalWidth / 2f;
+
+        for (int i = 0; i < count; i++)
+        {
+            var card = _handCards[i];
+
+            float x = startX + cardSpacing * i;
+            float y = 0;
+            float t = -(i - (count - 1) / 2f);
+            float rotAngle = t * maxFanAngle;
+            if (_hoveredHandCard != null)
+            {
+                int hoveredIndex = _handCards.IndexOf(_hoveredHandCard);
+
+                Debug.Log(hoveredIndex);
+
+                if (card == _hoveredHandCard)
+                {
+                    y += hoverRaise;
+                    rotAngle = 0;
+                }
+                else
+                {
+                    int dir = Mathf.Clamp(i - hoveredIndex, -1, 1);
+                    x += dir * hoverSpread * Mathf.Abs(i - hoveredIndex);
+                }
+            }
+
+            Vector2 targetPos = new(x, y);
+            card.SetTargetPosition(targetPos);
+            card.SetTargetRotation(rotAngle);
+        }
     }
 }

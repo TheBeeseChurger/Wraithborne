@@ -28,6 +28,7 @@ public class PlayerRuntimeState
                 Hand.Add(card);
                 CardAdded?.Invoke(card);
             }
+            else Debug.Log("No cards left in deck to draw! Draw() failed!");
         }
     }
 
