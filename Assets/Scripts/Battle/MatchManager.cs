@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MatchManager : MonoBehaviour
 {
@@ -30,6 +29,6 @@ public class MatchManager : MonoBehaviour
 
     public void TestExitTable()
     {
-        SceneManager.LoadScene("Map1");
+        OverworldManager.Instance.ReturnToOverworld();
     }
 }
