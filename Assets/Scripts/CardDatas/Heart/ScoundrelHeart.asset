@@ -18,9 +18,17 @@ MonoBehaviour:
   Artwork: {fileID: 0}
   CardType: 3
   CardPulseType: 2
-  HeartPassive: When an ally entity is killed, gain +1 [PulseTypes.Glass] Pulse.
+  HeartPassive: When an ally entity is killed, gain +1 [PulseTypes.Echo] Pulse.
   HeartHealth: 15
   HeartPulseGen: 3
   EntityPulseCost: 0
   EntityHealth: 0
   EntityDamage: 0
+  EntityRange: 0
+  EntitySpeed: 0
+  StructurePulseCost: 0
+  StructureHealth: 0
+  StructureDamage: 0
+  StructureRange: 0
+  RitualPulseCost: 0
+  RitualEffect: 

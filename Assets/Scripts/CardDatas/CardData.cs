@@ -35,4 +35,14 @@ public class CardData : ScriptableObject
     public int EntityPulseCost;
     public int EntityHealth;
     public int EntityDamage;
+    public int EntityRange;
+    public int EntitySpeed;
+
+    public int StructurePulseCost;
+    public int StructureHealth;
+    public int StructureDamage;
+    public int StructureRange;
+
+    public int RitualPulseCost;
+    [TextArea] public string RitualEffect;
 }

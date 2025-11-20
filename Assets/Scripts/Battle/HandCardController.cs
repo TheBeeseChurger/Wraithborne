@@ -1,7 +1,9 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class HandCardController : MonoBehaviour
+public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private float adjustDuration = 0.5f;
     private float cumulativeTime = 0.0f;
@@ -67,5 +69,15 @@ public class HandCardController : MonoBehaviour
     {
         _targetRotation = rotationAngle;
         cumulativeTime = 0f;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!_dragging) HandLayoutController.Instance.SetHovered(this);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!_dragging) HandLayoutController.Instance.SetHovered(null);
     }
 }

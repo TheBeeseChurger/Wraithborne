@@ -3,11 +3,6 @@ using UnityEngine;
 public class CardSpriteRenderer : MonoBehaviour
 {
     public Sprite sprite;
-    
-    void Start()
-    {
-        SetSprite(sprite);
-    }
 
     public void SetSprite(Sprite newSprite)
     {

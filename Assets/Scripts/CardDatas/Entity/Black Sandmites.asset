@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ccaa549efbac346b01a4df80e43349, type: 3}
-  m_Name: WitheredRose
+  m_Name: Black Sandmites
   m_EditorClassIdentifier: 
-  CardName: Withered Rose
-  CardDescription: A single rose, dried up and dead, and even still, its thorns cut.
+  CardName: Black Sandmites
+  CardDescription: A colony of sandmites of the Grey Deserts. Very angry.
   Artwork: {fileID: 0}
   CardType: 0
-  CardPulseType: 2
+  CardPulseType: 0
   HeartPassive: 
   HeartHealth: 0
   HeartPulseGen: 0
-  EntityPulseCost: 1
-  EntityHealth: 1
-  EntityDamage: 5
-  EntityRange: 2
-  EntitySpeed: 2
+  EntityPulseCost: 3
+  EntityHealth: 2
+  EntityDamage: 3
+  EntityRange: 4
+  EntitySpeed: 4
   StructurePulseCost: 0
   StructureHealth: 0
   StructureDamage: 0

@@ -35,6 +35,20 @@ public class CardInstance
 
                 this.mainText += "Passive - " + data.HeartPassive;
                 break;
+            case CardTypes.Structure:
+                this.currentCost = data.StructurePulseCost;
+                this.currentHealth = data.StructureHealth;
+                this.currentDamage = data.StructureDamage;
+                this.HasAction = false;
+                break;
+            case CardTypes.Ritual:
+                this.currentCost = data.RitualPulseCost;
+                this.currentDamage = -1;
+                this.currentHealth = -1;
+                this.HasAction = true;
+
+                this.mainText += data.RitualEffect;
+                break;
             default:
                 break;
         }

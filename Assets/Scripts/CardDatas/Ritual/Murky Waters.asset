@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ccaa549efbac346b01a4df80e43349, type: 3}
-  m_Name: WitheredRose
+  m_Name: Murky Waters
   m_EditorClassIdentifier: 
-  CardName: Withered Rose
-  CardDescription: A single rose, dried up and dead, and even still, its thorns cut.
+  CardName: Murky Waters
+  CardDescription: If you don't purify the waters of the Forgotten Region before
+    drinking, you'll join the dead in their graves.
   Artwork: {fileID: 0}
-  CardType: 0
-  CardPulseType: 2
+  CardType: 2
+  CardPulseType: 1
   HeartPassive: 
   HeartHealth: 0
   HeartPulseGen: 0
-  EntityPulseCost: 1
-  EntityHealth: 1
-  EntityDamage: 5
-  EntityRange: 2
-  EntitySpeed: 2
+  EntityPulseCost: 0
+  EntityHealth: 0
+  EntityDamage: 0
+  EntityRange: 0
+  EntitySpeed: 0
   StructurePulseCost: 0
   StructureHealth: 0
   StructureDamage: 0
   StructureRange: 0
-  RitualPulseCost: 0
-  RitualEffect: 
+  RitualPulseCost: 3
+  RitualEffect: Inflict Poison on target Enemy Unit for 3 turns.

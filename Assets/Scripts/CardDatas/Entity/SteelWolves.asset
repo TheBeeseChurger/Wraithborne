@@ -20,6 +20,15 @@ MonoBehaviour:
   CardPulseType: 3
   HeartPassive: 
   HeartHealth: 0
+  HeartPulseGen: 0
   EntityPulseCost: 4
   EntityHealth: 5
   EntityDamage: 3
+  EntityRange: 1
+  EntitySpeed: 3
+  StructurePulseCost: 0
+  StructureHealth: 0
+  StructureDamage: 0
+  StructureRange: 0
+  RitualPulseCost: 0
+  RitualEffect: 

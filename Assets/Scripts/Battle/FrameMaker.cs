@@ -9,7 +9,7 @@ public class FrameMaker : ScriptableObject
 
     public Sprite PickFrame(CardData card)
     {
-        if (card.CardType != CardTypes.Heart)
+        if (card.CardType != CardTypes.Heart && card.CardType != CardTypes.Ritual)
         {
             return normalFrames[(int)card.CardPulseType];
         }

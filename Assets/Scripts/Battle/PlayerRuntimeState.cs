@@ -18,7 +18,7 @@ public class PlayerRuntimeState
         Deck = new DeckInstance(deckData);
     }
 
-    public void Draw(int count)
+    public async void Draw(int count)
     {
         for (int i = 0; i < count; i++)
         {
@@ -27,6 +27,7 @@ public class PlayerRuntimeState
             {
                 Hand.Add(card);
                 CardAdded?.Invoke(card);
+                await Awaitable.WaitForSecondsAsync(0.5f);
             }
             else Debug.Log("No cards left in deck to draw! Draw() failed!");
         }

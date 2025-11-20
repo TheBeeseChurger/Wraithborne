@@ -31,17 +31,12 @@ public class HandLayoutController : MonoBehaviour
 
         anchor = GetComponent<RectTransform>();
 
-        StartCoroutine(InitialDraw());
+        InitialDraw();
     }
 
-    IEnumerator InitialDraw()
+    private void InitialDraw()
     {
-        while (_handCards.Count < 5)
-        {
-            yield return new WaitForSeconds(0.5f);
-            _owner.Draw(1);
-            RefreshLayout();
-        }
+        _owner.Draw(5);
     }
 
     private void MakeCard(CardInstance card)
@@ -51,12 +46,19 @@ public class HandLayoutController : MonoBehaviour
         uICard.transform.SetParent(anchor, false);
 
         _handCards.Add(uICard);
-        ReturnCard(uICard, spawnTransform.anchoredPosition);
+        ReturnCard(uICard, spawnTransform.position);
     }
 
-    private void ReturnCard(HandCardController card, Vector2 startingPos)
+    private void ReturnCard(HandCardController card, Vector3 startingPos)
     {
+        card.transform.position = startingPos;
+        RefreshLayout();
+    }
 
+    public void SetHovered(HandCardController card)
+    {
+        _hoveredHandCard = card;
+        RefreshLayout();
     }
 
     public void RefreshLayout()
@@ -78,8 +80,6 @@ public class HandLayoutController : MonoBehaviour
             if (_hoveredHandCard != null)
             {
                 int hoveredIndex = _handCards.IndexOf(_hoveredHandCard);
-
-                Debug.Log(hoveredIndex);
 
                 if (card == _hoveredHandCard)
                 {

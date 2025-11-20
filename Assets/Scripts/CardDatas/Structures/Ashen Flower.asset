@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ccaa549efbac346b01a4df80e43349, type: 3}
-  m_Name: WitheredRose
+  m_Name: Ashen Flower
   m_EditorClassIdentifier: 
-  CardName: Withered Rose
-  CardDescription: A single rose, dried up and dead, and even still, its thorns cut.
+  CardName: Ashen Flower
+  CardDescription: A flower with petals the color of ash. Many of them grow in the
+    Forbidden Region.
   Artwork: {fileID: 0}
-  CardType: 0
-  CardPulseType: 2
+  CardType: 1
+  CardPulseType: 0
   HeartPassive: 
   HeartHealth: 0
   HeartPulseGen: 0
-  EntityPulseCost: 1
-  EntityHealth: 1
-  EntityDamage: 5
-  EntityRange: 2
-  EntitySpeed: 2
-  StructurePulseCost: 0
-  StructureHealth: 0
-  StructureDamage: 0
-  StructureRange: 0
+  EntityPulseCost: 0
+  EntityHealth: 0
+  EntityDamage: 0
+  EntityRange: 0
+  EntitySpeed: 0
+  StructurePulseCost: 3
+  StructureHealth: 2
+  StructureDamage: 1
+  StructureRange: 1
   RitualPulseCost: 0
   RitualEffect: 

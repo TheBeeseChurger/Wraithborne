@@ -16,6 +16,7 @@ public class CardInstanceRenderer : MonoBehaviour, IPreviewable
     [Header("To be deleted variables")]
     public CardData cardData;
     public FrameMaker frameMaker;
+    public Sprite defaultArtwork;
 
     private void Start()
     {
@@ -24,7 +25,9 @@ public class CardInstanceRenderer : MonoBehaviour, IPreviewable
         // This is temp assignment
         _cardInstance = new CardInstance(cardData);
 
-        artworkRenderer.SetSprite(_cardInstance.Data.Artwork);
+        var sprite = _cardInstance.Data.Artwork;
+        if (sprite == null) sprite = defaultArtwork;
+        artworkRenderer.SetSprite(sprite);
         frameRenderer.SetSprite(frameMaker.PickFrame(cardData));
 
         costAmount.text = _cardInstance.currentCost.ToString();

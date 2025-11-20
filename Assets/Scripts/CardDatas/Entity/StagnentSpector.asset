@@ -24,3 +24,11 @@ MonoBehaviour:
   EntityPulseCost: 2
   EntityHealth: 3
   EntityDamage: 2
+  EntityRange: 2
+  EntitySpeed: 4
+  StructurePulseCost: 0
+  StructureHealth: 0
+  StructureDamage: 0
+  StructureRange: 0
+  RitualPulseCost: 0
+  RitualEffect: 
