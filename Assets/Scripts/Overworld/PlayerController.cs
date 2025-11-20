@@ -34,7 +34,11 @@ public class PlayerController : MonoBehaviour
         {
             OverworldManager.Instance.Register(this);
 
-            if (OverworldManager.Instance.hasSavedPostion) transform.position = OverworldManager.Instance.overworldPlayerPosition;
+            if (OverworldManager.Instance.hasSavedPostion)
+            {
+                transform.position = OverworldManager.Instance.overworldPlayerPosition;
+                Debug.Log("Moving to Saved Position from OverworldManager: " + OverworldManager.Instance.overworldPlayerPosition);
+            }
         }
     }
 

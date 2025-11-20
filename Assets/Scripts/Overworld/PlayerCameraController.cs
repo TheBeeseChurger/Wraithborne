@@ -34,6 +34,7 @@ public class PlayerCameraController : MonoBehaviour
     {
         var component = gameplayCamera.GetCinemachineComponent(CinemachineCore.Stage.Aim);
         component.ForceCameraPosition(component.FollowTargetPosition, starting);
+        Debug.Log("Rotating to Saved Rotation from OverworldManager: " + starting);
     }
 
     public void StartCutsceneOverride(Transform targetTransform)

@@ -14,7 +14,7 @@ public class OverworldManager : MonoBehaviour
     public DeckData playerDeck;
     public FrameMaker frameMaker;
 
-    public const int TABLE_SCENE_INDEX = 0;
+    public const int TABLE_SCENE_INDEX = 1;
 
     private PlayerController _playerController;
     private PlayerCameraController _playerCameraController;

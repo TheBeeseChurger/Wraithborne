@@ -31,12 +31,27 @@ public class HandLayoutController : MonoBehaviour
 
         anchor = GetComponent<RectTransform>();
 
-        InitialDraw();
+        if (_owner.Hand.Count == 0) InitialDraw();
+        else InitialLoad();
+    }
+
+    private void OnDisable()
+    {
+        _owner.CardAdded -= MakeCard;
     }
 
     private void InitialDraw()
     {
         _owner.Draw(5);
+    }
+
+    private async void InitialLoad()
+    {
+        foreach (var card in _owner.Hand)
+        {
+            MakeCard(card);
+            await Awaitable.WaitForSecondsAsync(0.5f);
+        }
     }
 
     private void MakeCard(CardInstance card)
