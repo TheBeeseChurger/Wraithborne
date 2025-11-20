@@ -29,6 +29,13 @@ public class PlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (OverworldManager.Instance != null)
+        {
+            OverworldManager.Instance.Register(this);
+
+            if (OverworldManager.Instance.hasSavedPostion) transform.position = OverworldManager.Instance.overworldPlayerPosition;
+        }
     }
 
     void Update()
@@ -63,5 +70,10 @@ public class PlayerController : MonoBehaviour
         // Combine horizontal and vertical movement
         Vector3 finalMove = (_currentDirection * playerSpeed) + (_playerVelocity.y * Vector3.up);
         _controller.Move(finalMove * Time.deltaTime);
+    }
+
+    public Vector3 TriggerSave()
+    {
+        return transform.position;
     }
 }

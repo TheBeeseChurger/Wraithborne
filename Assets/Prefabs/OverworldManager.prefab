@@ -49,3 +49,7 @@ MonoBehaviour:
   overworldPlayerScene:
     m_Handle: 0
   hasSavedPostion: 0
+  playerDeck: {fileID: 11400000, guid: 08820cccb3645dd48ba86f0213ec3dea, type: 2}
+  tableScene:
+    m_Handle: 0
+  frameMaker: {fileID: 11400000, guid: d9a7cbfe15ca5d542aea207641c761c5, type: 2}

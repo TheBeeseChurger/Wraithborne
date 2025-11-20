@@ -21,6 +21,19 @@ public class PlayerCameraController : MonoBehaviour
 
         cutsceneCamera.Priority.Value = 5;
         gameplayCamera.Priority.Value = 10;
+
+        if (OverworldManager.Instance != null)
+        {
+            OverworldManager.Instance.Register(this);
+
+            if (OverworldManager.Instance.hasSavedPostion) Load(OverworldManager.Instance.overworldPlayerRotation);
+        }
+    }
+
+    private void Load(Quaternion starting)
+    {
+        var component = gameplayCamera.GetCinemachineComponent(CinemachineCore.Stage.Aim);
+        component.ForceCameraPosition(component.FollowTargetPosition, starting);
     }
 
     public void StartCutsceneOverride(Transform targetTransform)
@@ -38,5 +51,10 @@ public class PlayerCameraController : MonoBehaviour
         gameplayCamera.Priority.Value = 10;
         _cutsceneTransform.parent = null;
         InputManager.Instance.EnableMouseInput(true);
+    }
+
+    public Quaternion TriggerSave()
+    {
+        return gameplayCamera.transform.rotation;
     }
 }
