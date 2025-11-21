@@ -3,7 +3,9 @@ using UnityEngine;
 public class CardBattleInteract : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private string text = "Press [E] to initiate a card battle.";
+    private string startingText = "Press [E] to initiate a card battle.";
+    [SerializeField]
+    private string ongoingText = "Press [E] to continue card battle.";
 
     [SerializeField]
     private DeckData enemyDeck;
@@ -15,6 +17,7 @@ public class CardBattleInteract : MonoBehaviour, IInteractable
 
     public string GetPromptText()
     {
-        return text;
+        if (MatchSession.CurrentMatch == null) return startingText;
+        else return ongoingText;
     }
 }

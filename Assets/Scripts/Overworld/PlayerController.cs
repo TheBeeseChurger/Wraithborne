@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private InputManager _inputManager;
 
+    private bool _isInitalized = false;
+
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -30,20 +32,39 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        if (!_isInitalized)
+        {
+            _controller.enabled = false;
+        }
+
         if (OverworldManager.Instance != null)
         {
             OverworldManager.Instance.Register(this);
 
-            if (OverworldManager.Instance.hasSavedPostion)
+            if (OverworldManager.Instance.hasSavedPostion) Load(OverworldManager.Instance.overworldPlayerPosition);
+
+            if (!_isInitalized)
             {
-                transform.position = OverworldManager.Instance.overworldPlayerPosition;
-                Debug.Log("Moving to Saved Position from OverworldManager: " + OverworldManager.Instance.overworldPlayerPosition);
+                _isInitalized = true;
+
+                _controller.enabled = true;
             }
         }
     }
 
+    private void Load(Vector3 position)
+    {
+        transform.position = position;
+
+        _isInitalized = true;
+
+        _controller.enabled = true;
+    }
+
     void Update()
     {
+        if (!_isInitalized) return;
+
         if (_controller.isGrounded && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0;
