@@ -37,13 +37,13 @@ public class OverworldManager : MonoBehaviour
         else Debug.LogError("ERROR! No saved overworld to return to!");
     }
 
-    public void StartCardBattle(DeckData enemyDeck)
+    public void StartCardBattle(DeckData enemyDeck, MapData mapData)
     {
         Save();
 
         if (MatchSession.CurrentMatch == null)
         {
-            MatchSession.StartMatch(playerDeck, enemyDeck, frameMaker);
+            MatchSession.StartMatch(mapData, playerDeck, enemyDeck, frameMaker);
         }
 
         SceneManager.LoadScene(TABLE_SCENE_INDEX);

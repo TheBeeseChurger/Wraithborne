@@ -35,11 +35,17 @@ public class MatchSession
     public PlayerRuntimeState Player;
     public PlayerRuntimeState Enemy;
 
-    public static void StartMatch(DeckData playerDeck, DeckData enemyDeck, FrameMaker fm)
+    public MapInstance Map;
+
+    public static void StartMatch(MapData mapData, DeckData playerDeck, DeckData enemyDeck, FrameMaker fm)
     {
         MatchSession.CurrentMatch = new MatchSession();
         CurrentMatch.CurrentPhase = MatchPhases.Pre;
         CurrentMatch.CurrentTurn = TurnPhases.None;
+
+        CurrentMatch.Map = new MapInstance(mapData);
+        CurrentMatch.Map.RefreshMap();
+
 
         CurrentMatch.Player = new PlayerRuntimeState(playerDeck);
         CurrentMatch.Enemy = new PlayerRuntimeState(enemyDeck);

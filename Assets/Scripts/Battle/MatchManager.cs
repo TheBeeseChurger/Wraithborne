@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MatchManager : MonoBehaviour
 {
+    [SerializeField] MapData mapData;
     [SerializeField] DeckData playerDeck;
     [SerializeField] DeckData enemyDeck;
     [SerializeField] FrameMaker fm;
@@ -9,10 +10,11 @@ public class MatchManager : MonoBehaviour
 
     void Start()
     {
-        if (MatchSession.CurrentMatch == null) MatchSession.StartMatch(playerDeck, enemyDeck, fm);
+        if (MatchSession.CurrentMatch == null) MatchSession.StartMatch(mapData, playerDeck, enemyDeck, fm);
         HandLayoutController.Instance.Initialize();
+        MapLayoutController.Instance.Initialize(MatchSession.CurrentMatch.Map);
 
-        TestSpawnWorldCard();
+        //TestSpawnWorldCard();
     }
 
     public void TestDrawCard()

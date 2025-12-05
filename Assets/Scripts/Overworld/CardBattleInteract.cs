@@ -9,10 +9,12 @@ public class CardBattleInteract : MonoBehaviour, IInteractable
 
     [SerializeField]
     private DeckData enemyDeck;
+    [SerializeField]
+    private MapData map;
 
     public void Interact()
     {
-        OverworldManager.Instance.StartCardBattle(enemyDeck);
+        OverworldManager.Instance.StartCardBattle(enemyDeck, map);
     }
 
     public string GetPromptText()
