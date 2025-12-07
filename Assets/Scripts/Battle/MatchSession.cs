@@ -31,7 +31,7 @@ public class MatchSession
 
     private FrameMaker FrameMaker;
 
-    //Other states
+    // Other states
     public PlayerRuntimeState Player;
     public PlayerRuntimeState Enemy;
 
@@ -45,7 +45,6 @@ public class MatchSession
 
         CurrentMatch.Map = new MapInstance(mapData);
         CurrentMatch.Map.RefreshMap();
-
 
         CurrentMatch.Player = new PlayerRuntimeState(playerDeck);
         CurrentMatch.Enemy = new PlayerRuntimeState(enemyDeck);

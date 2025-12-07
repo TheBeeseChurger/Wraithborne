@@ -18,6 +18,8 @@ public class MapLayoutController : MonoBehaviour
     {
         _instance = mapInstance;
         SpawnMap();
+        foreach (var unit in _instance.units) OnUnitSpawned(unit);
+        _instance.UnitSpawned += OnUnitSpawned;
     }
 
     private void SpawnMap()
@@ -32,7 +34,7 @@ public class MapLayoutController : MonoBehaviour
             var inst = Instantiate<GameObject>(tilePrefab);
             inst.transform.SetParent(transform);
 
-            // At some point, pass the data on to the prefab
+            inst.GetComponent<TileManager>().Initialize(tile.Value);
             inst.transform.localPosition = new Vector3(tile.Value.tileX, 0f, tile.Value.tileY);
         }
 
@@ -53,5 +55,21 @@ public class MapLayoutController : MonoBehaviour
                 inst.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
             }
         }
+    }
+
+    private void OnUnitSpawned(UnitInstance unit)
+    {
+        var inst = new GameObject(unit.sourceCard.Data.CardName);
+        var model = Instantiate<GameObject>(unit.sourceCard.Data.Model);
+
+        model.transform.SetParent(inst.transform);
+        inst.transform.SetParent(transform);
+
+        var previewer = inst.AddComponent<UnitPreviewer>();
+        previewer.Initialize(unit);
+        model.AddComponent<HoverPreviewTrigger>();
+
+        var spawnPos = new Vector3(unit.currentTile.tileX, 0f, unit.currentTile.tileY);
+        inst.transform.localPosition = spawnPos;
     }
 }

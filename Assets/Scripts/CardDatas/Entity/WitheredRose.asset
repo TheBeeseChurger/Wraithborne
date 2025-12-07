@@ -15,6 +15,7 @@ MonoBehaviour:
   CardName: Withered Rose
   CardDescription: A single rose, dried up and dead, and even still, its thorns cut.
   Artwork: {fileID: 0}
+  Model: {fileID: 4124429536207866670, guid: b899377c435002c429279f16b54920ac, type: 3}
   CardType: 0
   CardPulseType: 2
   HeartPassive: 

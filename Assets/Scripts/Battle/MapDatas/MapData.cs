@@ -6,6 +6,10 @@ public class MapData : ScriptableObject
 {
     public List<TileData> tiles;
     public List<WallData> walls;
+
+    [Header("Heart Spawn Coords")]
+    public Vector2Int heart1;
+    public Vector2Int heart2;
 }
 
 [System.Serializable]

@@ -30,3 +30,5 @@ MonoBehaviour:
     yA: 0
     xB: 1
     yB: 0
+  heart1: {x: 0, y: 0}
+  heart2: {x: 1, y: 0}

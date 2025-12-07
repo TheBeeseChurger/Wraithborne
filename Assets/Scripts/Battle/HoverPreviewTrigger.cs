@@ -14,6 +14,7 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
     private void Awake()
     {
         previewSource = GetComponent<IPreviewable>();
+        previewSource ??= GetComponentInParent<IPreviewable>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -23,7 +24,7 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
         hoverRoutine = StartCoroutine(ShowPreview());
     }
 
-    private void OnMouseEnter()
+    public void OnMouseEnter()
     {
         if (pointerMode) return;
         if (hoverRoutine != null) return;
@@ -35,15 +36,15 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
         if (!pointerMode) return;
         if (hoverRoutine != null) StopCoroutine(hoverRoutine);
         hoverRoutine = null;
-        CardPreviewPanel.Instance.Hide();
+        CardPreviewPanel.Instance.Hide(previewSource.GetCardInstance().instanceID);
     }
 
-    private void OnMouseExit()
+    public void OnMouseExit()
     {
         if (pointerMode) return;
         if (hoverRoutine != null) StopCoroutine(hoverRoutine);
         hoverRoutine = null;
-        CardPreviewPanel.Instance.Hide();
+        CardPreviewPanel.Instance.Hide(previewSource.GetCardInstance().instanceID);
     }
 
     IEnumerator ShowPreview()

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ScoundrelHeart
   m_EditorClassIdentifier: 
   CardName: Scoundrel Heart
-  CardDescription: The heart of a betrayer. A knife behind one's the back at all
-    times.
+  CardDescription: The heart of a betrayer. A knife behind one's back at all times.
   Artwork: {fileID: 0}
+  Model: {fileID: 3050027325718975848, guid: 914c489af81c5c64587ed05db2684608, type: 3}
   CardType: 3
   CardPulseType: 2
   HeartPassive: When an ally entity is killed, gain +1 [PulseTypes.Echo] Pulse.

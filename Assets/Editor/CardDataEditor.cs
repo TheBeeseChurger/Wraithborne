@@ -12,6 +12,7 @@ public class CardDataEditor : Editor
     SerializedProperty cardName;
     SerializedProperty cardDescription;
     SerializedProperty artwork;
+    SerializedProperty model;
 
     SerializedProperty cardType;
     SerializedProperty cardPulseType;
@@ -39,6 +40,7 @@ public class CardDataEditor : Editor
         cardName = serializedObject.FindProperty("CardName");
         cardDescription = serializedObject.FindProperty("CardDescription");
         artwork = serializedObject.FindProperty("Artwork");
+        model = serializedObject.FindProperty("Model");
 
         cardType = serializedObject.FindProperty("CardType");
         cardPulseType = serializedObject.FindProperty("CardPulseType");
@@ -69,6 +71,7 @@ public class CardDataEditor : Editor
         EditorGUILayout.PropertyField(cardName);
         EditorGUILayout.PropertyField(cardDescription);
         EditorGUILayout.PropertyField(artwork);
+        EditorGUILayout.PropertyField(model);
 
         EditorGUILayout.PropertyField(cardType);
         EditorGUILayout.PropertyField(cardPulseType);

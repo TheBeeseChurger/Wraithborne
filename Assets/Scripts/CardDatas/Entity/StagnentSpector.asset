@@ -16,6 +16,7 @@ MonoBehaviour:
   CardDescription: An entity with no solid form only a bundle of stained rags swaying
     gently in the Pulse.
   Artwork: {fileID: 0}
+  Model: {fileID: 4124429536207866670, guid: b899377c435002c429279f16b54920ac, type: 3}
   CardType: 0
   CardPulseType: 4
   HeartPassive: 

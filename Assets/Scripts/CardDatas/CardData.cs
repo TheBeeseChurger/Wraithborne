@@ -23,6 +23,7 @@ public class CardData : ScriptableObject
     public string CardName;
     [TextArea] public string CardDescription;
     public Sprite Artwork;
+    public GameObject Model;
 
     [Header("Type Information")]
     public CardTypes CardType;

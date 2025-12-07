@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,14 @@ public class MapInstance
 
     public Dictionary<(int x, int y), TileInstance> tiles = new();
     public HashSet<WallInstance> walls = new();
+    public HashSet<UnitInstance> units = new();
+
+    public event Action<UnitInstance> UnitSpawned;
 
     public int maxX;
     public int maxY;
+
+    private int _heartsMade = 0;
 
     public MapInstance(MapData mapData)
     {
@@ -48,18 +54,51 @@ public class MapInstance
 
         foreach(var w in source.walls)
         {
-            var a = tiles[(w.xA, w.yA)];
-            var b = tiles[(w.xB, w.yB)];
-
             var wi = new WallInstance(w);
 
             walls.Add(wi);
 
-            if (a != null && b != null)
+            if (tiles.TryGetValue((w.xA, w.yA), out TileInstance a) && tiles.TryGetValue((w.xB, w.yB), out TileInstance b))
             {
                 if (a.neighbors.Contains(b)) a.neighbors.Remove(b);
                 if (b.neighbors.Contains(a)) b.neighbors.Remove(a);
             }
+        }
+    }
+
+    public void SpawnUnit(CardInstance card, int x, int y, PlayerRuntimeState owner = null)
+    {
+        if (tiles.TryGetValue((x, y), out TileInstance ti))
+        {
+            var unit = new UnitInstance(card, ti, owner);
+            units.Add(unit);
+            UnitSpawned?.Invoke(unit);
+        }
+        else
+        {
+            Debug.LogError("Tile to spawn unit on is not valid!");
+            return;
+        }
+    }
+
+    public void SpawnHeartUnit(CardInstance heartCard, PlayerRuntimeState owner)
+    {
+        if (_heartsMade >= 2) return;
+        else if (_heartsMade == 1)
+        {
+            _heartsMade++;
+
+            var x = source.heart2.x;
+            var y = source.heart2.y;
+            SpawnUnit(heartCard, x, y, owner);
+        }
+        else if (_heartsMade == 0)
+        {
+            _heartsMade++;
+
+            var x = source.heart1.x;
+            var y = source.heart1.y;
+            SpawnUnit(heartCard, x, y, owner);
         }
     }
 

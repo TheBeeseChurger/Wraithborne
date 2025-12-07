@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af9645bbec29ec459842b5200ca4314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapData: {fileID: 11400000, guid: 917fab671c2b1b64eaaf0e9e00260fb5, type: 2}
+  mapData: {fileID: 11400000, guid: 220a7bb1ed974154fb901036230ad3e5, type: 2}
   playerDeck: {fileID: 11400000, guid: 08820cccb3645dd48ba86f0213ec3dea, type: 2}
   enemyDeck: {fileID: 11400000, guid: 08820cccb3645dd48ba86f0213ec3dea, type: 2}
   fm: {fileID: 11400000, guid: d9a7cbfe15ca5d542aea207641c761c5, type: 2}
@@ -900,13 +900,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745745657}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0, y: 10, z: -6.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1299485078}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!114 &745745661
 MonoBehaviour:
   m_ObjectHideFlags: 0

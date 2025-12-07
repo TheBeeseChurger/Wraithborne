@@ -16,6 +16,7 @@ MonoBehaviour:
   CardDescription: A flower with petals the color of ash. Many of them grow in the
     Forbidden Region.
   Artwork: {fileID: 0}
+  Model: {fileID: 1631978183682103616, guid: 722c1816d4866bc4da9e6ae9252caa57, type: 3}
   CardType: 1
   CardPulseType: 0
   HeartPassive: 

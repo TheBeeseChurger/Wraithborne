@@ -21,6 +21,7 @@ public class HandLayoutController : MonoBehaviour
     private PlayerRuntimeState _owner;
 
     private RectTransform anchor;
+    private bool dragging;
 
     void Awake() => Instance = this;
 
@@ -57,7 +58,7 @@ public class HandLayoutController : MonoBehaviour
     private void MakeCard(CardInstance card)
     {
         var uICard = Instantiate<GameObject>(handCardPrefab).GetComponent<HandCardController>();
-        uICard.Initialize(card, MatchSession.CurrentMatch.GetCardFrame(card.Data));
+        uICard.Initialize(card, MatchSession.CurrentMatch.GetCardFrame(card.Data), _handCards.Count);
         uICard.transform.SetParent(anchor, false);
 
         _handCards.Add(uICard);
@@ -72,8 +73,16 @@ public class HandLayoutController : MonoBehaviour
 
     public void SetHovered(HandCardController card)
     {
+        if (dragging) return;
         _hoveredHandCard = card;
         RefreshLayout();
+    }
+
+    public void SetDragging(bool dragging)
+    {
+        this.dragging = dragging;
+
+        if (!dragging) RefreshLayout();
     }
 
     public void RefreshLayout()

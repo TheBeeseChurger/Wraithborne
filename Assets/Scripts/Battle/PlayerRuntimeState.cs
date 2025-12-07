@@ -16,6 +16,7 @@ public class PlayerRuntimeState
     {
         this.HeartCard = new CardInstance(deckData.HeartCard);
         Deck = new DeckInstance(deckData);
+        SpawnHeart();
     }
 
     public async void Draw(int count)
@@ -31,6 +32,22 @@ public class PlayerRuntimeState
             }
             else Debug.Log("No cards left in deck to draw! Draw() failed!");
         }
+    }
+
+    public void Spawn(int handPos, int x, int y)
+    {
+        if (Hand.Count - 1 >= handPos)
+        {
+            var card = Hand[handPos];
+            Hand.RemoveAt(handPos);
+            
+            MatchSession.CurrentMatch.Map.SpawnUnit(card, x, y, this);
+        }
+    }
+
+    private void SpawnHeart()
+    {
+        MatchSession.CurrentMatch.Map.SpawnHeartUnit(HeartCard, this);
     }
 
     public (bool, int) IsHandOverfilled()

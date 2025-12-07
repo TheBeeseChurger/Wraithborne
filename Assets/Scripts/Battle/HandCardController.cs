@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private float adjustDuration = 0.5f;
     private float cumulativeTime = 0.0f;
@@ -16,6 +16,8 @@ public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerE
     private Vector2 _targetPosition;
     private float _targetRotation;
 
+    private int _handIndex;
+
     private bool _dragging;
 
     private void Awake()
@@ -27,8 +29,9 @@ public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerE
         else Debug.LogError("ERROR! UIInstanceRenderer and InstanceRenderer are both present!");
     }
 
-    public void Initialize(CardInstance cardInstance, Sprite s)
+    public void Initialize(CardInstance cardInstance, Sprite s, int handIndex)
     {
+        _handIndex = handIndex;
         if (m_UIMode) m_UIInstanceRenderer.Initialize(cardInstance, s);
         else m_InstanceRenderer.Initialize(cardInstance, s);
     }
@@ -79,5 +82,22 @@ public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!_dragging) HandLayoutController.Instance.SetHovered(null);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _dragging = true;
+        HandLayoutController.Instance.SetDragging(true);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        _trans.position = eventData.position;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        _dragging = false;
+        HandLayoutController.Instance.SetDragging(false);
     }
 }

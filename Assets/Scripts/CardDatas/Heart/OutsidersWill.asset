@@ -16,6 +16,7 @@ MonoBehaviour:
   CardDescription: This heart is chasing what it lost, desperately searching for
     something in a new world.
   Artwork: {fileID: 21300000, guid: 055c0b5d96df8304bb485e25edc96c16, type: 3}
+  Model: {fileID: 3050027325718975848, guid: 914c489af81c5c64587ed05db2684608, type: 3}
   CardType: 3
   CardPulseType: 4
   HeartPassive: This heart card can steal the passives of other hearts upon defeating
@@ -25,3 +26,11 @@ MonoBehaviour:
   EntityPulseCost: 0
   EntityHealth: 0
   EntityDamage: 0
+  EntityRange: 0
+  EntitySpeed: 0
+  StructurePulseCost: 0
+  StructureHealth: 0
+  StructureDamage: 0
+  StructureRange: 0
+  RitualPulseCost: 0
+  RitualEffect: 
