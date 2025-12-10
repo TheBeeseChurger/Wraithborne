@@ -4,7 +4,7 @@ public class TileManager : MonoBehaviour
 {
     public TileInstance instance;
 
-    //public UnitManager unit = null;
+    public HoverPreviewTrigger occupantTrigger;
 
     public MeshRenderer meshRenderer;
     public Color hoverColor;
@@ -24,16 +24,22 @@ public class TileManager : MonoBehaviour
     {
         if (instance == null) return;
 
-        // if (unit != null) unit.OnMouseEnter();
+        if (occupantTrigger != null) occupantTrigger.OnMouseEnter();
+
         _startingColor = meshRenderer.material.color;
         meshRenderer.SetPropertyBlock(_mpb);
     }
 
-    public void OnMouseExit()
+    public async void OnMouseExit()
     {
         if (instance == null) return;
 
-        // if (unit != null) unit.OnMouseExit();
+        if (occupantTrigger != null)
+        {
+            occupantTrigger.entered = false;
+            await Awaitable.NextFrameAsync();
+            if (!occupantTrigger.entered) occupantTrigger.ExitHover();
+        }
 
         if (_startingColor != Color.white)
         {

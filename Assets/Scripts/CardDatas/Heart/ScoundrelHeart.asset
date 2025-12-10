@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardName: Scoundrel Heart
   CardDescription: The heart of a betrayer. A knife behind one's back at all times.
-  Artwork: {fileID: 0}
+  Artwork: {fileID: 21300000, guid: 75f47f1bb0e08c443854f55da0e73f76, type: 3}
   Model: {fileID: 3050027325718975848, guid: 914c489af81c5c64587ed05db2684608, type: 3}
   CardType: 3
   CardPulseType: 2

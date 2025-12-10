@@ -11,6 +11,8 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
 
     [SerializeField] float delay = 0.3f;
 
+    public bool entered = false;
+
     private void Awake()
     {
         previewSource = GetComponent<IPreviewable>();
@@ -20,13 +22,18 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!pointerMode) return;
+        if (entered) return;
+        entered = true;
         if (hoverRoutine != null) return;
         hoverRoutine = StartCoroutine(ShowPreview());
+        entered = true;
     }
 
     public void OnMouseEnter()
     {
         if (pointerMode) return;
+        if (entered) return;
+        entered = true;
         if (hoverRoutine != null) return;
         hoverRoutine = StartCoroutine(ShowPreview());
     }
@@ -34,17 +41,25 @@ public class HoverPreviewTrigger : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!pointerMode) return;
-        if (hoverRoutine != null) StopCoroutine(hoverRoutine);
-        hoverRoutine = null;
-        CardPreviewPanel.Instance.Hide(previewSource.GetCardInstance().instanceID);
+        if (!entered) return;
+        ExitHover();
     }
 
-    public void OnMouseExit()
+    public async void OnMouseExit()
     {
         if (pointerMode) return;
+        entered = false;
+        await Awaitable.NextFrameAsync();
+        if (entered) return;
+        ExitHover();
+    }
+
+    public void ExitHover()
+    {
         if (hoverRoutine != null) StopCoroutine(hoverRoutine);
         hoverRoutine = null;
         CardPreviewPanel.Instance.Hide(previewSource.GetCardInstance().instanceID);
+        entered = false;
     }
 
     IEnumerator ShowPreview()

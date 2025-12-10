@@ -10,6 +10,7 @@ public class CardPreviewPanel : MonoBehaviour
 
     private int instanceID;
     private bool isShowing = false;
+    private bool isLocked = false;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class CardPreviewPanel : MonoBehaviour
 
     public void Show(IPreviewable previewTarget)
     {
+        if (isLocked) return;
         if (isShowing) return;
         var instance = previewTarget.GetCardInstance();
         previewRender.Initialize(instance, MatchSession.CurrentMatch.GetCardFrame(instance.Data));
@@ -30,10 +32,17 @@ public class CardPreviewPanel : MonoBehaviour
 
     public void Hide(int instanceID)
     {
+        if (isLocked) return;
         if (!isShowing) return;
         if (instanceID != this.instanceID) return;
 
         isShowing = false;
         previewRender.gameObject.SetActive(false);
+    }
+
+    public void Lock(bool l)
+    {
+        if (!isShowing) return;
+        isLocked = l;
     }
 }

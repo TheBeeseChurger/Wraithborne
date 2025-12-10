@@ -9,6 +9,8 @@ public class HandLayoutController : MonoBehaviour
     [Header("Spawning Settings")]
     [SerializeField] GameObject handCardPrefab;
     [SerializeField] RectTransform spawnTransform;
+    [SerializeField] GameObject worldCardPrefab;
+    [SerializeField] Transform worldSpawnTransform;
 
     [Header("Layout Settings")]
     [SerializeField] float cardSpacing = 120f;
@@ -20,7 +22,6 @@ public class HandLayoutController : MonoBehaviour
     private HandCardController _hoveredHandCard;
     private PlayerRuntimeState _owner;
 
-    private RectTransform anchor;
     private bool dragging;
 
     void Awake() => Instance = this;
@@ -30,9 +31,7 @@ public class HandLayoutController : MonoBehaviour
         _owner = MatchSession.CurrentMatch.Player;
         _owner.CardAdded += MakeCard;
 
-        anchor = GetComponent<RectTransform>();
-
-        if (_owner.Hand.Count == 0) InitialDraw();
+        if (MatchSession.CurrentMatch.TurnCount == 1) InitialDraw();
         else InitialLoad();
     }
 
@@ -55,14 +54,72 @@ public class HandLayoutController : MonoBehaviour
         }
     }
 
+    public int GetIndex(CardInstance card)
+    {
+        return _owner.Hand.IndexOf(card);
+    }
+
+    public bool SpawnOnTile(CardInstance card, TileManager tile)
+    {
+        // Validation
+        if (card.Data.CardType == CardTypes.Ritual) return false;
+        if (card.Data.CardType == CardTypes.Heart) return false;
+        if (tile.instance.occupant != null) return false;
+        //if (card.currentCost > current pulse reserve) return false;
+
+        var x = tile.instance.tileX;
+        var y = tile.instance.tileY;
+        
+        var index = GetIndex(card);
+
+        _owner.Spawn(index, x, y);
+        return true;
+    }
+
+    public void SwitchToWorld(HandCardController UICardController)
+    {
+        CardPreviewPanel.Instance.Lock(true);
+        GenerateWorldCard(UICardController.GetInstance());
+        _handCards.Remove(UICardController);
+        Destroy(UICardController.gameObject);
+
+        dragging = false;
+        SetHovered(null);
+    }
+
+    public void SwitchToUI(WorldCardController worldCardController)
+    {
+        CardPreviewPanel.Instance.Lock(false);
+        var instance = worldCardController.GetInstance();
+        CardPreviewPanel.Instance.Hide(instance.instanceID);
+        MakeCard(instance);
+        Destroy(worldCardController.gameObject);
+    }
+
+    public void DeleteWorldCard(WorldCardController worldCardController)
+    {
+        CardPreviewPanel.Instance.Lock(false);
+        var instance = worldCardController.GetInstance();
+        CardPreviewPanel.Instance.Hide(instance.instanceID);
+        Destroy(worldCardController.gameObject);
+    }
+
+    private void GenerateWorldCard(CardInstance card)
+    {
+        var worldCard = Instantiate<GameObject>(worldCardPrefab).GetComponent<WorldCardController>();
+        worldCard.transform.SetParent(worldSpawnTransform);
+        worldCard.Initialize(card, MatchSession.CurrentMatch.GetCardFrame(card.Data));
+    }
+
     private void MakeCard(CardInstance card)
     {
         var uICard = Instantiate<GameObject>(handCardPrefab).GetComponent<HandCardController>();
-        uICard.Initialize(card, MatchSession.CurrentMatch.GetCardFrame(card.Data), _handCards.Count);
-        uICard.transform.SetParent(anchor, false);
+        uICard.Initialize(card, MatchSession.CurrentMatch.GetCardFrame(card.Data));
+        uICard.transform.SetParent(spawnTransform, false);
 
         _handCards.Add(uICard);
-        ReturnCard(uICard, spawnTransform.position);
+        var spawnPos = new Vector3(spawnTransform.position.x - 500f, spawnTransform.position.y, spawnTransform.position.z);
+        ReturnCard(uICard, spawnPos);
     }
 
     private void ReturnCard(HandCardController card, Vector3 startingPos)

@@ -19258,8 +19258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7767c1b4ec9c6444b0eb24f8c1dca92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Press [E] to initiate a card battle.
+  startingText: Press [E] to initiate a card battle.
+  ongoingText: Press [E] to continue card battle.
   enemyDeck: {fileID: 11400000, guid: 08820cccb3645dd48ba86f0213ec3dea, type: 2}
+  map: {fileID: 11400000, guid: 220a7bb1ed974154fb901036230ad3e5, type: 2}
 --- !u!65 &1422558442
 BoxCollider:
   m_ObjectHideFlags: 0

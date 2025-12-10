@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MapLayoutController : MonoBehaviour
@@ -8,6 +9,8 @@ public class MapLayoutController : MonoBehaviour
     [SerializeField] private GameObject wallPrefab;
 
     private MapInstance _instance;
+
+    private Dictionary<TileInstance, TileManager> tiles = new();
 
     private void Awake()
     {
@@ -20,6 +23,11 @@ public class MapLayoutController : MonoBehaviour
         SpawnMap();
         foreach (var unit in _instance.units) OnUnitSpawned(unit);
         _instance.UnitSpawned += OnUnitSpawned;
+    }
+
+    private void OnDisable()
+    {
+        _instance.UnitSpawned -= OnUnitSpawned;
     }
 
     private void SpawnMap()
@@ -36,6 +44,8 @@ public class MapLayoutController : MonoBehaviour
 
             inst.GetComponent<TileManager>().Initialize(tile.Value);
             inst.transform.localPosition = new Vector3(tile.Value.tileX, 0f, tile.Value.tileY);
+
+            tiles.Add(tile.Value, inst.GetComponent<TileManager>());
         }
 
         foreach (var wall in _instance.walls)
@@ -68,6 +78,9 @@ public class MapLayoutController : MonoBehaviour
         var previewer = inst.AddComponent<UnitPreviewer>();
         previewer.Initialize(unit);
         model.AddComponent<HoverPreviewTrigger>();
+
+        var tile = _instance.tiles[(unit.currentTile.tileX, unit.currentTile.tileY)];
+        tiles[tile].occupantTrigger = model.GetComponent<HoverPreviewTrigger>();
 
         var spawnPos = new Vector3(unit.currentTile.tileX, 0f, unit.currentTile.tileY);
         inst.transform.localPosition = spawnPos;

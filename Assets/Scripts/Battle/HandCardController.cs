@@ -9,14 +9,10 @@ public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerE
     private float cumulativeTime = 0.0f;
 
     [SerializeField] private UICardInstanceRenderer m_UIInstanceRenderer;
-    [SerializeField] private CardInstanceRenderer m_InstanceRenderer;
     private Transform _trans;
 
-    private bool m_UIMode;
     private Vector2 _targetPosition;
     private float _targetRotation;
-
-    private int _handIndex;
 
     private bool _dragging;
 
@@ -24,16 +20,17 @@ public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         _trans = GetComponent<Transform>();
 
-        if (m_InstanceRenderer == null) m_UIMode = true;
-        else if (m_UIInstanceRenderer == null) m_UIMode = false;
-        else Debug.LogError("ERROR! UIInstanceRenderer and InstanceRenderer are both present!");
+        if (m_UIInstanceRenderer == null) Debug.LogError("ERROR! UIInstanceRenderer not set manually!");
     }
 
-    public void Initialize(CardInstance cardInstance, Sprite s, int handIndex)
+    public void Initialize(CardInstance cardInstance, Sprite s)
     {
-        _handIndex = handIndex;
-        if (m_UIMode) m_UIInstanceRenderer.Initialize(cardInstance, s);
-        else m_InstanceRenderer.Initialize(cardInstance, s);
+        m_UIInstanceRenderer.Initialize(cardInstance, s);
+    }
+
+    public CardInstance GetInstance()
+    {
+        return m_UIInstanceRenderer.GetCardInstance();
     }
 
     private void Update()
@@ -93,6 +90,10 @@ public class HandCardController : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnDrag(PointerEventData eventData)
     {
         _trans.position = eventData.position;
+        if (eventData.position.y > 200f)
+        {
+            HandLayoutController.Instance.SwitchToWorld(this);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)

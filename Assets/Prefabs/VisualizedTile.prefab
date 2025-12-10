@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5951355446114041219}
   - component: {fileID: 7005506372182101317}
   - component: {fileID: 7452980187148727081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualizedTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eceaa571cdebdd849bc62c27541b729a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  occupantTrigger: {fileID: 0}
   meshRenderer: {fileID: 8513139927238594895}
   hoverColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &7452980187148727081
@@ -80,7 +81,7 @@ GameObject:
   - component: {fileID: 2341422856332680327}
   - component: {fileID: 7130180409651163047}
   - component: {fileID: 8513139927238594895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardName: Desperate Prayer
   CardDescription: In this age, even a prayer could change the outcome.
-  Artwork: {fileID: 0}
+  Artwork: {fileID: 21300000, guid: 428cdc83f8cf16a43a9f3a9aca09b2fa, type: 3}
+  Model: {fileID: 0}
   CardType: 2
   CardPulseType: 4
   HeartPassive: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardName: Black Sandmites
   CardDescription: A colony of sandmites of the Grey Deserts. Very angry.
-  Artwork: {fileID: 0}
+  Artwork: {fileID: 21300000, guid: f41c932b5a7b7d8448023d11dd4d814d, type: 3}
   Model: {fileID: 4124429536207866670, guid: b899377c435002c429279f16b54920ac, type: 3}
   CardType: 0
   CardPulseType: 0

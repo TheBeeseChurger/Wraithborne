@@ -15,7 +15,7 @@ MonoBehaviour:
   CardName: Steel Wolves
   CardDescription: A small pack of wolves born of [PulseType.Iron]. They are not
     quite hunters.
-  Artwork: {fileID: 0}
+  Artwork: {fileID: 21300000, guid: 5fd2f6efee47049498d2a7ad7fae95ad, type: 3}
   Model: {fileID: 4124429536207866670, guid: b899377c435002c429279f16b54920ac, type: 3}
   CardType: 0
   CardPulseType: 3

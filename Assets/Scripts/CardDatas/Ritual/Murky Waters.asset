@@ -15,7 +15,8 @@ MonoBehaviour:
   CardName: Murky Waters
   CardDescription: If you don't purify the waters of the Forgotten Region before
     drinking, you'll join the dead in their graves.
-  Artwork: {fileID: 0}
+  Artwork: {fileID: 21300000, guid: 30dab7eeee9c5dc4cb5a98ba41987c69, type: 3}
+  Model: {fileID: 0}
   CardType: 2
   CardPulseType: 1
   HeartPassive: 

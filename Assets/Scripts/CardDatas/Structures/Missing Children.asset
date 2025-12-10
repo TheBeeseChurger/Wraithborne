@@ -15,7 +15,7 @@ MonoBehaviour:
   CardName: Missing Children
   CardDescription: Rumor has it, around here, their little footsteps can still be
     heard.
-  Artwork: {fileID: 0}
+  Artwork: {fileID: 21300000, guid: e632230b8c38e7949a2579dfabff438e, type: 3}
   Model: {fileID: 1631978183682103616, guid: 722c1816d4866bc4da9e6ae9252caa57, type: 3}
   CardType: 1
   CardPulseType: 4
